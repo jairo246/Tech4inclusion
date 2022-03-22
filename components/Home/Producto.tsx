@@ -1,5 +1,5 @@
 import * as React from 'react';
-import interfacePerfil from './interfacePerfil';
+import interfaceProducto from './interfaceProducto';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
@@ -13,20 +13,19 @@ import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutline
 
 
 
-const Perfil: React.FC<interfacePerfil> = ({
+const Producto: React.FC<interfaceProducto> = ({
     nombre,
     fecha,
     titulo,
-    listHashTags,
     reaccion,
     comentario,
     escrito
-    }: interfacePerfil) => {
+    }: interfaceProducto) => {
 
  return(
    <Box
       sx={{
-          bgcolor: 'white',
+          bgcolor: 'grey',
           border: "1px solid grey",
           boxShadow: 3,
           borderRadius: 3,
@@ -37,7 +36,7 @@ const Perfil: React.FC<interfacePerfil> = ({
         <Grid
           my={2}
           mx={2}>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          <Avatar alt="" src="" />
         </Grid>
         <Grid
             my={2}
@@ -58,18 +57,6 @@ const Perfil: React.FC<interfacePerfil> = ({
           <Typography>
               {titulo}
           </Typography>
-          <Grid container
-                direction="row"
-                justifyItems="center"
-                alignItems="center"> 
-          {listHashTags.map((hashTags) => (
-
-              <Typography key={hashTags.name}>
-                  {hashTags.name}
-              </Typography>
-
-            ))}  
-          </Grid>
      </Grid>
      <Grid
         container spacing={2}>
@@ -95,7 +82,7 @@ const Perfil: React.FC<interfacePerfil> = ({
               </Typography>
           </Grid>
           <Grid item xs={2}>
-            <Button>
+            <Button color= "secondary">
               Save
             </Button>
           </Grid>
@@ -104,6 +91,6 @@ const Perfil: React.FC<interfacePerfil> = ({
  ); 
 }
 
-export default Perfil;
+export default Producto;
 
 

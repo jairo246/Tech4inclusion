@@ -1,10 +1,20 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
+import Toolbar from '@mui/material/Toolbar';
+import Drawer from '@mui/material/Drawer';
 
+import InboxIcon from '@mui/icons-material/Inbox';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import TextSnippetTwoToneIcon from '@mui/icons-material/TextSnippetTwoTone';
 import KeyboardVoiceTwoToneIcon from '@mui/icons-material/KeyboardVoiceTwoTone';
+
 
 const menuData=[
     {icon: <HomeTwoToneIcon/>,name:"Home"},
@@ -27,56 +37,41 @@ const listHashTags=[{name:"#skip",link: "link"},{name:"#sport",link: "link"},{na
 ];
 
 interface interfaceMenu{
-    cantidad: number;
+    menuWidth: number;
 }
 
 const Menu: React.FC<interfaceMenu> = ({
-    cantidad,
-
+    menuWidth,
     }: interfaceMenu) => {
 
  return(
-    <Grid>
-        <Grid  
-            container 
-            spacing={2}
-            direction="column">
-
-            {menuData.map((menu) => (
-
-                <Grid
-                    ml={2}
-                    my={1}
-                    key={menu.name}
-                    container
-                    direction="row"
-                    >
-                        {menu.icon}
-                        <Typography>
-                            {menu.name}
-                        </Typography>
-                </Grid>
-            ))}
-        </Grid>
-        <Grid sx={{height: "300px"}}>
-            <Typography>
-                Popular Tags
-            </Typography>
-            {listHashTags.map((tag) => (
-                <Grid
-                    ml={2}
-                    my={1}
-                    key={tag.name}
-                    container
-                    direction="row"
-                    >
-                        <Typography>
-                            {tag.name}
-                        </Typography>
-                </Grid>
-            ))}
-        </Grid>
-    </Grid>
+    <Drawer
+        sx={{
+          width: menuWidth,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: menuWidth,
+            boxSizing: 'border-box',
+          },
+        }}
+        variant="permanent"
+        anchor="left"
+      >
+        <Toolbar />
+        <Divider />
+        <List>
+          {menuData.map((menu, index) => (
+            <ListItem button key={menu.name}>
+              <ListItemIcon>
+                {menu.icon}
+              </ListItemIcon>
+              <ListItemText primary={menu.name} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        
+      </Drawer>
  ); 
 }
 
